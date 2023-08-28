@@ -4,16 +4,58 @@ import protect from '../middleware/userMiddleware.js'
 
 const router = express.Router()
 
-// @description get all blogs and create a new blog
-// @route   POST /api/blog   GET /api/blog
-// @access  Public
+/**
+ * @swagger
+ * /api/blog:
+ *   get:
+ *     description: Get all blogs
+ *     responses:
+ *       200:
+ *         description: List of all blogs
+ *   post:
+ *     description: Create a new blog (UserId should be passed in query)
+ *     parameters:
+ *       - name: userId
+ *         in: query
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Blog created
+ */
 router.route('/').get(findAll).post(createBlog)
 
-
-// @description delete a blog and edit a blog
-// @route   EDIT /api/blog/:id   DELETE /api/blog/:id
-// @access  protected
+/**
+ * @swagger
+ * /api/blog/{id}:
+ *   put:
+ *     security:
+ *       - bearerAuth: []
+ *     description: Edit a blog
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Blog edited
+ *   delete:
+ *     security:
+ *       - bearerAuth: []
+ *     description: Delete a blog
+ *     parameters:
+ *       - name: id
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Blog deleted
+ */
 router.route('/:id').put(protect, editBlog).delete(protect, deleteBlog)
 
-
-export default router
+export default router;
