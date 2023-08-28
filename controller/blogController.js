@@ -8,7 +8,7 @@ export const findAll = asyncHandler(async(req, res)=> {
         const blog = await Blog.find({})
         return res.json(blog)
     }catch(e) {
-        res.status(500).json({ error: 'Server error' });
+        res.status(500).json({ error: 'Something Went Wrong' });
 
     }
    
@@ -42,8 +42,9 @@ export const createBlog = asyncHandler(async(req, res)=> {
             creator: newBlog.user.name
         });
     } catch (error) {
-        res.status(500).json({ error: 'Server error' });
+        res.status(500).json({ error: 'Something Went Wrong ' });
     }
 
     
 })
+
