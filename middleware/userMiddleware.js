@@ -7,7 +7,7 @@ const protect = asyncHandler(async (req, res, next) => {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer')) {
-        return res.status(401).json({ error: 'Not authorized, no token' });
+        return res.status(401).json({ error: 'Not authorized, no token, please login ' });
     }
 
     const token = authHeader.split(' ')[1];
@@ -19,6 +19,7 @@ const protect = asyncHandler(async (req, res, next) => {
         if (req.user) {
             if (req.params.id) {
                 const blog = await Blog.findById(req.params.id);
+               
                 if (blog && blog.user._id.toString() === req.user._id.toString()) {
                     return next();
                 } else {

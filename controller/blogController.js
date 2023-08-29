@@ -20,26 +20,17 @@ export const findAll = asyncHandler(async(req, res)=> {
 
 export const createBlog = asyncHandler(async(req, res)=> {
     const {title, content} = req.body
-    const {userId} = req.query
-
-
     try {
-        if (!userId) {
-            return res.status(400).json({ error: 'User ID is required' });
-        }
+     
 
         if(!title || !content) {
             return res.status(400).json({ error: 'All fields are required' });
 
         }
 
-        const user = await User.findOne({ _id: userId });
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
+       
         const newBlog = await Blog.create({
-            user: user,
+            user: req.user,
             title,
             content,
         });
@@ -47,9 +38,10 @@ export const createBlog = asyncHandler(async(req, res)=> {
         res.status(201).json({
             title: newBlog.title,
             content: newBlog.content,
-            creator: newBlog.user.name
+            creator: req.user.name
         });
     } catch (error) {
+        console.log(error)
         return handleServerError(res, 'Error creating blog.');
 
     }

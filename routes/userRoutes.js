@@ -7,22 +7,67 @@ const router = express.Router();
  * @swagger
  * /api/users/login:
  *   post:
- *     description: login a user
+ *     description: Login a user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 description: The email of the user.
+ *               password:
+ *                 type: string
+ *                 description: The user's password.
+ *             required:
+ *               - email
+ *               - password
  *     responses:
  *       201:
- *         description: used Logged
+ *         description: User Logged In
+ *       400:
+ *         description: Bad request
+ *       401:
+ *         description: Unauthorized
  */
-router.route('/login').post(userLogin)
+router.route('/login').post(userLogin);
 
 /**
  * @swagger
  * /api/users/register:
  *   post:
- *     description: create a new user
+ *     description: Create a new user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: The name of the user.
+ *               email:
+ *                 type: string
+ *                 description: The email of the user.
+ *               password:
+ *                 type: string
+ *                 description: The user's password.
+ *             required:
+ *               - name
+ *               - email
+ *               - password
  *     responses:
  *       201:
- *         description: create n new user
+ *         description: New user created
+ *       400:
+ *         description: Bad request
+ *       409:
+ *         description: Conflict (e.g., email already exists)
  */
-router.route('/register').post(userRegister)
+router.route('/register').post(userRegister);
+
 
 export default router

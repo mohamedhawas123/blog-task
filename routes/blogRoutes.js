@@ -13,18 +13,20 @@ const router = express.Router()
  *       200:
  *         description: List of all blogs
  *   post:
- *     description: Create a new blog (UserId should be passed in query)
- *     parameters:
- *       - name: userId
- *         in: query
- *         required: true
- *         schema:
- *           type: string
+ *     description: Create a new blog
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Blog created
+ * securityDefinitions:
+ *   bearerAuth:
+ *     type: apiKey
+ *     name: Authorization
+ *     in: header
  */
-router.route('/').get(findAll).post(createBlog)
+
+router.route('/').get(findAll).post(protect, createBlog)
 
 /**
  * @swagger
