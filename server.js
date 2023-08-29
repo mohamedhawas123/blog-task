@@ -5,7 +5,7 @@ import blogRoutes from './routes/blogRoutes.js'
 import cors from 'cors'
 import swaggerJsDoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
-import {swaggerOptions} from './swagger-config.js'
+import {swaggerOptions} from './utilits/swagger-config.js'
 
 connectDB()
 
@@ -26,4 +26,4 @@ app.use('/api/blog', blogRoutes)
 
 
 
-app.listen(5000, console.log('server is running'))
+app.listen(5000, '0.0.0.0' , console.log('server is running'))
