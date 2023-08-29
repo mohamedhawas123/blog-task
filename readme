@@ -9,6 +9,7 @@ This is a basic implementation of a Blog REST API that allows users to register,
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [API Documentation](#api-documentation)
+- [API DEPLOYMENT](#DEPLOYMENT)
 
 ## Overview
 
@@ -48,11 +49,17 @@ docker run express-doc
 
 #API Documentation
 
-
+1- Register user: POST  https://blog-task-production.up.railway.app/api/users/register
+2- login user: POST https://blog-task-production.up.railway.app/api/users/login
+3- List blogs: GET https://blog-task-production.up.railway.app/api/blog  
+4- create blog: POST https://blog-task-production.up.railway.app/api/blog  (require Bearer Token)
+5- edit blog: PUT https://blog-task-production.up.railway.app/api/blog/:id (require Bearer Token)
+6- delete blog: DELETE https://blog-task-production.up.railway.app/api/blog/:id (require Bearer Token)
+7- swagger: https://blog-task-production.up.railway.app/api-docs/
 
 
 #DEPLOYMENT
 
-deployed API: https://quotes-scraping-production.up.railway.app/quotes 
-GETHUB: https://github.com/mohamedhawas123/quotes-scraping.git
+deployed API: https://blog-task-production.up.railway.app
+
 
