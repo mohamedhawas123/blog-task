@@ -1,0 +1,58 @@
+readme
+# API FOR LOGIN AND REGISTER AND BLOG CRUD
+
+This is a basic implementation of a Blog REST API that allows users to register, login, create posts, list all posts, edit their own posts, and delete their own posts. The API is built using Express.js, MongoDB as the database, password encryption for security, and input validation for data integrity.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [API Documentation](#api-documentation)
+
+## Overview
+
+This project consists of three main components:
+1. **Authentication:** 
+2. **BLOG CRUD:** .
+3. **MIDDLEWARE:** 
+
+## Prerequisites
+
+Before you begin, ensure you have the following prerequisites:
+
+- npm
+- express.js
+- bcryptjs
+- cors
+- express-async-handler
+- mongoose
+- swagger-jsdoc
+- swagger-ui-express
+- docker(if you want to run the docker image)
+
+
+
+## Installation
+
+1. Clone this repository to your local machine: https://github.com/mohamedhawas123/quotes-scraping.git
+
+2. npm install
+
+3. npm start
+
+OR you can run docker image after you clone the project
+
+docker run express-doc
+
+
+#API Documentation
+
+
+
+
+#DEPLOYMENT
+
+deployed API: https://quotes-scraping-production.up.railway.app/quotes 
+GETHUB: https://github.com/mohamedhawas123/quotes-scraping.git
+

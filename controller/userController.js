@@ -1,8 +1,10 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js'
+import { config } from 'dotenv';
 import generateToken from '../utilits/token.js'
 import {handleServerError} from '../utilits/errorHandle.js'
 
+config()
 
 const userLogin = asyncHandler(async (req, res) => {
 
@@ -78,6 +80,7 @@ const userRegister = asyncHandler(async (req, res) => {
             throw new Error("something went wrong")
         }
     }catch(e) {
+        console.error(e)
         return handleServerError(res, 'error creating user')
     }
 
